@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nom">Carte-Hage !</string>
+    <string name="bataille">La Bataille !</string>
+    <string name="poker">Le Poker !</string>
+    <string name="blackjack">Le Blackjack !</string>
+</resources>
