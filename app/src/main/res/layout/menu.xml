@@ -79,7 +79,8 @@
             android:layout_height="wrap_content"
             android:background="#345C30"
             android:orientation="horizontal"
-            android:padding="10dp">
+            android:padding="10dp"
+            android:tag="Blackjack">
 
             <TextView
                 android:id="@+id/blackjack"

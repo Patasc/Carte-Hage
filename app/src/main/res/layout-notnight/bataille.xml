@@ -2,27 +2,61 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/batailleLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#497539">
 
-    <TextView
-        android:id="@+id/textView2"
+    <ImageView
+        android:id="@+id/pileBot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/bataille"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="64dp"
+        android:scaleX="2"
+        android:scaleY="2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/dos_carte" />
+
+    <TextView
+        android:id="@+id/scoreBot"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="70dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button"
+    <ImageView
+        android:id="@+id/pileJoueur"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="main"
-        android:text="Button"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="64dp"
+        android:clickable="true"
+        android:onClick="pileJoueurClicked"
+        android:scaleX="2"
+        android:scaleY="2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:srcCompat="@drawable/dos_carte" />
+
+    <TextView
+        android:id="@+id/scoreJoueur"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginBottom="70dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

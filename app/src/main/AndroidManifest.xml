@@ -25,7 +25,13 @@
             android:exported="true"
             android:label="bataille"
             android:theme="@style/Theme.CarteHage">
+        </activity>
 
+        <activity
+            android:name=".blackjack.Blackjack"
+            android:exported="true"
+            android:label="blackjack"
+            android:theme="@style/Theme.CarteHage">
         </activity>
     </application>
 

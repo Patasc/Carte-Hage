@@ -1,6 +1,7 @@
 package cmi.carte_hage;
 
 import cmi.carte_hage.bataille.Bataille;
+import cmi.carte_hage.blackjack.Blackjack;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ public class Main extends AppCompatActivity {
         setContentView(R.layout.menu);
 
         ListeDeJeux.put("Bataille", Bataille.class);
+        ListeDeJeux.put("Blackjack", Blackjack.class);
 
     }
 
