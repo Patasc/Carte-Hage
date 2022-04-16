@@ -1,8 +1,7 @@
 package cmi.carte_hage.bataille;
 
-import android.animation.AnimatorInflater;
-import android.animation.AnimatorSet;
-import android.content.res.Resources;
+import android.animation.Animator;
+import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -12,9 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -29,9 +26,16 @@ public class Bataille extends AppCompatActivity {
 
     ConstraintLayout layout;
 
-    AnimatorSet animation;
-    AnimatorSet tour_up;
-    AnimatorSet tour_down;
+    Animator.AnimatorListener VerificationGagnant = new Animator.AnimatorListener() {
+        @Override public void onAnimationStart(Animator animator) {}
+        @Override public void onAnimationRepeat(Animator animator) {}
+        @Override public void onAnimationCancel(Animator animator) {}
+
+        @Override
+        public void onAnimationEnd(Animator animator) {
+            verificationGagnantTour();
+        }
+    };
 
 
     @Override
@@ -44,40 +48,6 @@ public class Bataille extends AppCompatActivity {
         scoreBot = findViewById(R.id.scoreBot);
 
         layout = findViewById(R.id.batailleLayout);
-         animation = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.testing);
-        tour_up = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.bataille_tour_up);
-        tour_down = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.bataille_tour_down);
-
-        // Animation animation = AnimationUtils.loadAnimation(this, R.anim.secondtest);
-        /*
-
-
-        ImageView image = new ImageView(this);
-        image.setImageResource(R.drawable.dos_carte);
-        image.setId(View.generateViewId());
-        image.setScaleX(5);
-        image.setScaleY(5);
-
-        v.addView(image);
-
-
-        c.clone(v);
-
-        c.connect(image.getId(), ConstraintSet.LEFT, 0, ConstraintSet.LEFT);
-        c.connect(image.getId(), ConstraintSet.RIGHT, 0, ConstraintSet.RIGHT);
-        c.connect(image.getId(), ConstraintSet.BOTTOM, 0, ConstraintSet.BOTTOM, 50);
-
-        c.applyTo(v);
-
-
-        // image.startAnimation(animation);
-
-        AnimatorSet animation = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.testing);
-        animation.setTarget(image);
-        animation.start();
-
-        */
-
         this.demarrage();
 
     }
@@ -92,10 +62,8 @@ public class Bataille extends AppCompatActivity {
         }
 
         Collections.shuffle(store);
-        System.out.println("Number 1 !");
 
         for (int i = 0; i < 52; i++){
-            System.out.println(i);
             if (i % 2 == 0){
                 CartesJoueur.add(store.get(i));
                 this.scoreJoueur.setText(String.valueOf(Integer.parseInt((String) this.scoreJoueur.getText()) + 1));
@@ -162,19 +130,28 @@ public class Bataille extends AppCompatActivity {
 
             anchorCarteJoueur.applyTo(layout);
 
-            tour_up.setTarget(carteJoueur);
-            tour_up.start();
 
-            tour_down.setTarget(carteBot);
-            tour_down.start();
+
+            ObjectAnimator testing = ObjectAnimator.ofFloat(carteJoueur, "TranslationY", -600.F).setDuration(2000);
+            testing.addListener(this.VerificationGagnant);
+            testing.start();
+
+            ObjectAnimator.ofFloat(carteBot, "TranslationY", 600.F).setDuration(2000).start();
+
 
             this.scoreJoueur.setText(String.valueOf(Integer.parseInt((String) this.scoreJoueur.getText()) - 1));
             this.scoreBot.setText(String.valueOf(Integer.parseInt((String) this.scoreBot.getText()) - 1));
+
+
         }
     }
 
     public void pileJoueurClicked(View view){
         view.setClickable(false);
         this.tour();
+    }
+
+    public void verificationGagnantTour(){
+        System.out.println("Animation terminée !");
     }
 }
