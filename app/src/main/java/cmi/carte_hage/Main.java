@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Dictionary;
 import java.util.Hashtable;
 
-
 public class Main extends AppCompatActivity {
     Dictionary<String, Class> ListeDeJeux = new Hashtable<String, Class>();
 
