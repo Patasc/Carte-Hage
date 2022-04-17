@@ -21,12 +21,15 @@ public class Main extends AppCompatActivity {
 
         setContentView(R.layout.menu);
 
+        // Afin de pouvoir changer d'activité, il faut les stocker dans la liste
         ListeDeJeux.put("Bataille", Bataille.class);
         ListeDeJeux.put("Blackjack", Blackjack.class);
 
     }
 
     public void onClickHandler(View view){
+        // Lorsqu'un jeu est demandé, on récupère lequel grâce à la fonction getTag(),
+        // Avant d'utiliser le dictionnaire ListeDeJeux pour changer d'activité
         Intent i = new Intent(this, ListeDeJeux.get(view.getTag()));
         startActivity(i);
     }

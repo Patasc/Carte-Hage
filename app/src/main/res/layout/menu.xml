@@ -78,6 +78,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#345C30"
+            android:clickable="true"
+            android:onClick="onClickHandler"
             android:orientation="horizontal"
             android:padding="10dp"
             android:tag="Blackjack">
